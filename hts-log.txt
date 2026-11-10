@@ -1,0 +1,39 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 21 May 2026 14:19:29 at https://cvdelucasfernandes.sitew.org/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "fr, en, *" https://cvdelucasfernandes.sitew.org/ -O1 "C:\Mes Sites Web\CV de Lucas Fernandes" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:19:57	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb&v=1735581474
+14:19:57	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb&v=1735581474 to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=fb&cache_key=1779365981
+14:19:57	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb
+14:19:57	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=fb&cache_key=1779365981
+14:19:57	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_57x57
+14:19:57	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_57x57 to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=apple_touch_icon_57x57&cache_key=1779365981
+14:19:57	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_72x72
+14:19:57	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_72x72 to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=apple_touch_icon_72x72&cache_key=1779365981
+14:19:57	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_114x114
+14:19:57	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_114x114 to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=apple_touch_icon_114x114&cache_key=1779365981
+14:19:57	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_192x192
+14:19:57	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=apple_touch_icon_192x192 to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=apple_touch_icon_192x192&cache_key=1779365981
+14:19:57	Error: 	"Gone" (410) at link https://cvdelucasfernandes.sitew.org/Formation (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Gone" (410) at link https://cvdelucasfernandes.sitew.org/Competences (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Gone" (410) at link https://cvdelucasfernandes.sitew.org/Contact (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/'https://ra0.cdnsw.com/cc0/7772469_1280.jpg' (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/competences (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/'https://ra0.cdnsw.com/cc0/2355701_960.jpg' (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/projets (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/a-propos (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/'https://ra0.cdnsw.com/cc0/3938432_640.jpg' (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/'https://ra0.cdnsw.com/cc0/1873854_640.png' (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/loisirs (from https://cvdelucasfernandes.sitew.org/)
+14:19:57	Error: 	"Not Found" (404) at link https://cvdelucasfernandes.sitew.org/contact (from https://cvdelucasfernandes.sitew.org/)
+14:19:58	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb&v=1735478957
+14:19:58	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb&v=1735478957 to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=fb&cache_key=1779365981
+14:19:58	Warning: 	Found for https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb&v=1766067059
+14:19:58	Warning: 	File has moved from https://cvdelucasfernandes.sitew.org/site/screenshot/?size_preset=fb&v=1766067059 to https://v-images.cdnsw.com/site-screenshots/0000/0195/9881/desktop.webp?preset=fb&cache_key=1779365981
+
+HTTrack Website Copier/3.49-2 mirror complete in 29 seconds : 39 links scanned, 18 files written (3699411 bytes overall) [1173524 bytes received at 40466 bytes/sec], 3305395 bytes transferred using HTTP compression in 17 files, ratio 20%, 4.0 requests per connection
+(12 errors, 16 warnings, 0 messages)
