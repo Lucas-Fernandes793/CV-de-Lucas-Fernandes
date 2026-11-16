@@ -28,11 +28,171 @@ html {
 body {
   margin: 0;
   color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+  perspective: 1800px;
+  perspective-origin: center 45%;
+}
+
+.page-sheet {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
   background:
     radial-gradient(circle at 8% 0%, rgba(86, 122, 214, 0.14), transparent 28rem),
     linear-gradient(180deg, #f8faff 0%, var(--background) 100%);
-  font-size: 16px;
-  line-height: 1.7;
+  backface-visibility: hidden;
+}
+
+.page-sheet::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 44%,
+    rgba(20, 32, 58, 0.2) 49%,
+    rgba(20, 32, 58, 0.28) 50%,
+    transparent 56%
+  );
+  background-position: left center;
+  background-size: 200% 100%;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-sheet.is-entering,
+.page-sheet.is-leaving {
+  will-change: transform, filter, box-shadow;
+}
+
+.page-sheet.is-entering[data-direction="forward"] {
+  transform-origin: right center;
+  animation: page-turn-in-forward 520ms cubic-bezier(0.16, 0.72, 0.24, 1) both;
+}
+
+.page-sheet.is-entering[data-direction="backward"] {
+  transform-origin: left center;
+  animation: page-turn-in-backward 520ms cubic-bezier(0.16, 0.72, 0.24, 1) both;
+}
+
+.page-sheet.is-leaving[data-direction="forward"] {
+  transform-origin: left center;
+  animation: page-turn-out-forward 520ms cubic-bezier(0.55, 0, 0.82, 0.38) both;
+}
+
+.page-sheet.is-leaving[data-direction="backward"] {
+  transform-origin: right center;
+  animation: page-turn-out-backward 520ms cubic-bezier(0.55, 0, 0.82, 0.38) both;
+}
+
+.page-sheet.is-entering[data-direction="forward"]::after {
+  animation: page-shadow-in-forward 520ms ease-out both;
+}
+
+.page-sheet.is-entering[data-direction="backward"]::after {
+  animation: page-shadow-in-backward 520ms ease-out both;
+}
+
+.page-sheet.is-leaving[data-direction="forward"]::after {
+  animation: page-shadow-out-forward 520ms ease-in both;
+}
+
+.page-sheet.is-leaving[data-direction="backward"]::after {
+  animation: page-shadow-out-backward 520ms ease-in both;
+}
+
+@keyframes page-turn-in-forward {
+  from {
+    filter: brightness(0.82);
+    transform: rotateY(68deg);
+    box-shadow: 0 14px 40px rgba(15, 25, 50, 0.24);
+  }
+
+  to {
+    filter: brightness(1);
+    transform: rotateY(0);
+    box-shadow: 0 0 0 rgba(15, 25, 50, 0);
+  }
+}
+
+@keyframes page-turn-in-backward {
+  from {
+    filter: brightness(0.82);
+    transform: rotateY(-68deg);
+    box-shadow: 0 14px 40px rgba(15, 25, 50, 0.24);
+  }
+
+  to {
+    filter: brightness(1);
+    transform: rotateY(0);
+    box-shadow: 0 0 0 rgba(15, 25, 50, 0);
+  }
+}
+
+@keyframes page-turn-out-forward {
+  to {
+    filter: brightness(0.82);
+    transform: rotateY(-68deg);
+    box-shadow: 0 14px 40px rgba(15, 25, 50, 0.24);
+  }
+}
+
+@keyframes page-turn-out-backward {
+  to {
+    filter: brightness(0.82);
+    transform: rotateY(68deg);
+    box-shadow: 0 14px 40px rgba(15, 25, 50, 0.24);
+  }
+}
+
+@keyframes page-shadow-out-forward {
+  from {
+    background-position: left center;
+    opacity: 0;
+  }
+
+  to {
+    background-position: right center;
+    opacity: 1;
+  }
+}
+
+@keyframes page-shadow-out-backward {
+  from {
+    background-position: right center;
+    opacity: 0;
+  }
+
+  to {
+    background-position: left center;
+    opacity: 1;
+  }
+}
+
+@keyframes page-shadow-in-forward {
+  from {
+    background-position: left center;
+    opacity: 1;
+  }
+
+  to {
+    background-position: right center;
+    opacity: 0;
+  }
+}
+
+@keyframes page-shadow-in-backward {
+  from {
+    background-position: right center;
+    opacity: 1;
+  }
+
+  to {
+    background-position: left center;
+    opacity: 0;
+  }
 }
 
 a {
@@ -136,59 +296,7 @@ a:focus-visible {
 }
 
 main.container {
-  --page-enter-offset: 34px;
   padding-block: 38px 12px;
-  animation: page-enter 520ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
-}
-
-:root[data-transition-direction="backward"] main.container {
-  --page-enter-offset: -34px;
-}
-
-@keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateX(var(--page-enter-offset));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes page-turn-forward {
-  to {
-    transform: perspective(1200px) rotateY(0);
-  }
-}
-
-@keyframes page-turn-backward {
-  to {
-    transform: perspective(1200px) rotateY(0);
-  }
-}
-
-.page-transition {
-  position: fixed;
-  z-index: 100;
-  inset: 0;
-  background: var(--hero-background);
-  pointer-events: none;
-  backface-visibility: hidden;
-  will-change: transform;
-}
-
-.page-transition[data-direction="forward"] {
-  transform: perspective(1200px) rotateY(-90deg);
-  transform-origin: left center;
-  animation: page-turn-forward 420ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
-}
-
-.page-transition[data-direction="backward"] {
-  transform: perspective(1200px) rotateY(90deg);
-  transform-origin: right center;
-  animation: page-turn-backward 420ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
 .page-intro {
@@ -668,13 +776,16 @@ main.container {
     scroll-behavior: auto;
   }
 
-  main.container {
-    animation: none;
+  .page-sheet {
+    animation: none !important;
+    filter: none !important;
+    transform: none !important;
+    will-change: auto;
   }
 
-  .page-transition {
-    animation: none;
-    display: none;
+  .page-sheet::after {
+    animation: none !important;
+    opacity: 0;
   }
 
   *,

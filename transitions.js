@@ -1,11 +1,21 @@
-const transitionDuration = 420;
+const transitionDuration = 520;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const directionKey = "page-transition-direction";
-const savedDirection = sessionStorage.getItem(directionKey);
+const page = document.querySelector(".page-sheet");
+const currentUrl = new URL(window.location.href);
+const savedDirection = currentUrl.searchParams.get(directionKey);
 
-document.documentElement.dataset.transitionDirection =
-  savedDirection === "backward" ? "backward" : "forward";
-sessionStorage.removeItem(directionKey);
+if ((savedDirection === "forward" || savedDirection === "backward") && page && !reduceMotion.matches) {
+  currentUrl.searchParams.delete(directionKey);
+  window.history.replaceState(null, "", currentUrl.href);
+  page.dataset.direction = savedDirection;
+  page.classList.add("is-entering");
+
+  page.addEventListener("animationend", () => {
+    page.classList.remove("is-entering");
+    delete page.dataset.direction;
+  }, { once: true });
+}
 
 const pageLinks = [...document.querySelectorAll(".main-nav a:not(.nav-download)")];
 
@@ -49,23 +59,25 @@ document.addEventListener("click", (event) => {
 
   event.preventDefault();
 
-  if (document.querySelector(".page-transition")) {
+  if (!page) {
+    window.location.assign(destination.href);
     return;
   }
 
-  sessionStorage.setItem(directionKey, direction);
-
-  const transition = document.createElement("div");
-  transition.className = "page-transition";
-  transition.dataset.direction = direction;
-  transition.setAttribute("aria-hidden", "true");
-  document.body.append(transition);
+  page.dataset.direction = direction;
+  page.classList.add("is-leaving");
+  destination.searchParams.set(directionKey, direction);
 
   window.setTimeout(() => {
     window.location.assign(destination.href);
   }, transitionDuration);
 });
 
-window.addEventListener("pageshow", () => {
-  document.querySelector(".page-transition")?.remove();
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    page?.classList.remove("is-entering", "is-leaving");
+    if (page) {
+      delete page.dataset.direction;
+    }
+  }
 });
