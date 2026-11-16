@@ -136,14 +136,19 @@ a:focus-visible {
 }
 
 main.container {
+  --page-enter-offset: 34px;
   padding-block: 38px 12px;
   animation: page-enter 520ms cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+
+:root[data-transition-direction="backward"] main.container {
+  --page-enter-offset: -34px;
 }
 
 @keyframes page-enter {
   from {
     opacity: 0;
-    transform: translateX(34px);
+    transform: translateX(var(--page-enter-offset));
   }
 
   to {
@@ -152,9 +157,15 @@ main.container {
   }
 }
 
-@keyframes page-cover {
+@keyframes page-turn-forward {
   to {
-    transform: scaleX(1);
+    transform: perspective(1200px) rotateY(0);
+  }
+}
+
+@keyframes page-turn-backward {
+  to {
+    transform: perspective(1200px) rotateY(0);
   }
 }
 
@@ -164,10 +175,20 @@ main.container {
   inset: 0;
   background: var(--hero-background);
   pointer-events: none;
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: page-cover 420ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  backface-visibility: hidden;
   will-change: transform;
+}
+
+.page-transition[data-direction="forward"] {
+  transform: perspective(1200px) rotateY(-90deg);
+  transform-origin: left center;
+  animation: page-turn-forward 420ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.page-transition[data-direction="backward"] {
+  transform: perspective(1200px) rotateY(90deg);
+  transform-origin: right center;
+  animation: page-turn-backward 420ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
 .page-intro {
